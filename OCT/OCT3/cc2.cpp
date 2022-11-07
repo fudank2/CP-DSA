@@ -40,11 +40,25 @@ int kidane(int a[],int n){int mx= INT16_MIN;int sum=0;rep(i,0,n){sum+=a[i];mx= m
 
 
 
-
+//in this code o'm going to write code of sieve of erasthosnese
 
 void solve()
 {
     IO
+    int n;cin>>n;
+    bool a[n+1]={0};
+    a[0]=1;
+    a[1]=1;
+    int n1= sqrt(n);
+    rep(i,2,n1+1)
+    {
+        for(int k=i*i;k<n;k+=i)
+        {
+            a[k]=1;
+        }
+    }
+    rep(i,0,n)if(a[i]==0)cout<<i<<" ";
+
 }
 
 int main()

@@ -45,6 +45,37 @@ int kidane(int a[],int n){int mx= INT16_MIN;int sum=0;rep(i,0,n){sum+=a[i];mx= m
 void solve()
 {
     IO
+    w(x)
+    {
+        string s;cin>>s;int n=s.length();
+        int s1[n];
+        rep(i,0,n)
+        {
+            s1[i]=s[i]-'0';
+        }
+        int k=-1,k1=-1;
+        bool c=0;
+        rep(j,0,10)
+        {
+            for(int i=n-1;i>k;i--)
+            {
+                if(!c&&s1[i]==j)
+                {
+                    c=1;
+                    k1=i;
+                }
+                else if(c&&s1[i]!=j&&s1[i]!=9)
+                {
+                    s1[i]=s1[i]+1;
+                }
+            }
+            c=0;
+            k=k1;
+        }
+        sort(s1,s1+n);
+        rep(i,0,n)cout<<s1[i];
+        cout<<"\n";
+    }
 }
 
 int main()

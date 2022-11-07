@@ -1,4 +1,5 @@
 
+
 #include<bits/stdc++.h>
 using namespace std; 
 #define ll              long long
@@ -45,6 +46,27 @@ int kidane(int a[],int n){int mx= INT16_MIN;int sum=0;rep(i,0,n){sum+=a[i];mx= m
 void solve()
 {
     IO
+    int n,d;cin>>n>>d;
+    int a[n];rep(i,0,n)cin>>a[i];
+    int n1=n;
+    d= min(d,n-d);
+    int forcopy;
+    rep(i,0,1)
+    {
+        n1= n;
+        
+        if(n%2==0||i==0)forcopy= a[i];
+        n1= n1+i-d;
+        while(n1>=0)
+        {
+                
+            int nextcopy= a[n1];
+            a[n1]= forcopy;
+            forcopy=nextcopy;
+            n1= n1-d;
+        }
+    }
+    rep(i,0,n)cout<<a[i]<<" ";
 }
 
 int main()
@@ -69,3 +91,7 @@ int main()
 
 
 
+
+
+
+/////

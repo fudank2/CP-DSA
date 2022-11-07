@@ -45,6 +45,7 @@ int kidane(int a[],int n){int mx= INT16_MIN;int sum=0;rep(i,0,n){sum+=a[i];mx= m
 void solve()
 {
     IO
+    //int n;cin>>n;int a[n];rep(i,0,n)cin>>a[i];
 }
 
 int main()

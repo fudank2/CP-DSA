@@ -45,12 +45,47 @@ int kidane(int a[],int n){int mx= INT16_MIN;int sum=0;rep(i,0,n){sum+=a[i];mx= m
 void solve()
 {
     IO
+    int n=80000000;
+    int prime[n];
+    rep(i,0,n)prime[i]=1;
+    for(int i=2;i*i<=n;i++)
+    {
+        if(prime[i])
+        {
+            for(int j=i*i;j<n;j+=i)
+            {
+                prime[j]=0;
+            }
+        }
+    }
+    ll num=600851475143;
+    int i=2;
+    while(i<n&&num>0)
+    {
+        if(prime[i]&&num%i==0)
+        {
+            num= num/i;
+        }
+        else i++;
+    }
+    cout<<i<<"\n";
 }
 
 int main()
 {
     solve();
-    return 0;
+    /* ll num=600851475143;
+    int k=0;
+    rep(i,1472,10000)
+    {
+        if(num%i==0)
+        {
+            num=num/i;
+            k=i;break;
+        }
+    }
+    cout<<(ll)k*num<<"\n";
+    return 0; */
 }
 
 

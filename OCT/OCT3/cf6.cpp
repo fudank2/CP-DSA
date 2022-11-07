@@ -45,6 +45,56 @@ int kidane(int a[],int n){int mx= INT16_MIN;int sum=0;rep(i,0,n){sum+=a[i];mx= m
 void solve()
 {
     IO
+    w(x)
+    {
+        int n1;cin>>n1;
+        int a[n1];rep(i,0,n1)cin>>a[i];
+        if(n1%2==1){cout<<-1<<"\n";continue;}
+        int p=0,n=0;
+        rep(i,0,n1)
+        {
+            if(i%2==0&&a[i]>0)p++;
+            else if(i%2==0) n++;
+            else if(i%2==1&&a[i]>0)n++;
+            else if(i%2==1)p++;
+        }
+        if(p==n){cout<<1<<"\n";cout<<1<<" "<<n1<<"\n";}
+        else{
+            int sum=0;
+            rep(i,0,n1)
+            {
+                if(i%2==0)
+                {
+                    if((sum==0&&n==p)||(sum==1&&p+1==n)||(sum==-1&&p-1==n))
+                    {
+                        cout<<2<<"\n";
+                        cout<<1<<" "<<i<<"\n";
+                        cout<<i+2<<" "<<n1<<"\n";
+                        break;
+                    }
+                    sum+=a[i];
+                    if(a[i]==1)p--;
+                    else n--;
+                }
+                else 
+                {
+                    if((sum==0&&n==p)||(sum==1&&p-1==n)||(sum==-1&&p+1==n))
+                    {
+                        cout<<2<<"\n";
+                        cout<<1<<" "<<i<<"\n";
+                        cout<<i+1<<" "<<n1<<"\n";
+                        break;
+                    }
+                    sum-=a[i];
+                    if(a[i]==1)n--;
+                    else p--;
+                }
+
+
+            }
+        }
+
+    }
 }
 
 int main()

@@ -45,6 +45,23 @@ int kidane(int a[],int n){int mx= INT16_MIN;int sum=0;rep(i,0,n){sum+=a[i];mx= m
 void solve()
 {
     IO
+    w(x)
+    {
+        int n;cin>>n;
+        string s;cin>>s;
+        int a[n];rep(i,0,n)cin>>a[i];
+        int ans=0;
+        bool check=0;
+        rep(i,0,n)
+        {
+            if(s[i]==0)check=1;
+            if(check)
+            {
+                
+            }
+        }
+        cout<<ans<<"\n";
+    }
 }
 
 int main()
@@ -57,7 +74,7 @@ int main()
 /* 
 
 
-//
+//talknew
 
  */
 

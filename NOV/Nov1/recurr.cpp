@@ -37,14 +37,30 @@ int is_search(int a[],int k,int l,int r){if(l<=r){int mid=(l+r)/2;if(a[mid]==k)r
 int kidane(int a[],int n){int mx= INT16_MIN;int sum=0;rep(i,0,n){sum+=a[i];mx= max(sum,mx);if(sum<0)
         {sum=0;}}return mx;}
 
+void pd(int n)
+{
+    if(n==0)return;
+    cout<<n<<" ";
+    pd(n-1);
+    cout<<n<<" ";
+    
+}
+/// tower of honoi
 
+void toh(int n,char a,char b,char c)
+{
+    if(n==0)return;
 
-
+    toh(n-1,a,c,b);
+    cout<<n<<" =>"<<a<<" ->"<<b<<"\n";
+    toh(n-1,c,a,b);
+}
 
 
 void solve()
 {
     IO
+    toh(3,'a','b','c');
 }
 
 int main()

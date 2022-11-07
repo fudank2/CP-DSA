@@ -45,6 +45,30 @@ int kidane(int a[],int n){int mx= INT16_MIN;int sum=0;rep(i,0,n){sum+=a[i];mx= m
 void solve()
 {
     IO
+    w(x)
+    {
+        int n;cin>>n;
+        int a[n],b[n];
+        int ma=INT_MIN,mb=INT_MIN;
+        rep(i,0,n){int x;cin>>x;a[i]=x;ma=max(ma,x);}
+        rep(i,0,n){int x;cin>>x;b[i]=x;mb=max(mb,x);}
+        bool check=0;
+        if(ma>mb)no;
+        else{
+            //
+            rep(i,0,n)
+            {
+                if(a[i]==b[i]||b[i]>=b[i+1]+1)check=0;
+                else{
+                    check=1;break;
+                }
+            }
+            if(check)no;
+            else yes;
+        }
+        
+
+    }
 }
 
 int main()

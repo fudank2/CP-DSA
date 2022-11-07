@@ -33,9 +33,8 @@ int nsum(int x){return(x*(x+1))/2;}
 int fact(int x){if(x<=1)return 1;else return x*fact(x-1);}
 bool isPalindrome(string s){int n=s.length();rep(i,0,n/2){if(s[i]!=s[n-i-1])return false;}return true;}
 int is_search(int a[],int k,int l,int r){if(l<=r){int mid=(l+r)/2;if(a[mid]==k)return mid;
-        if(a[mid]<k)return is_search(a,k,mid+1,r);else return is_search(a,k,l,mid-1);}else{return -1;}}
-int kidane(int a[],int n){int mx= INT16_MIN;int sum=0;rep(i,0,n){sum+=a[i];mx= max(sum,mx);if(sum<0)
-        {sum=0;}}return mx;}
+        if(a[mid]<k)return is_search(a,k,mid+1,r);else return is_search(a,k,l,mid-1);}else{return -1;}
+}
 
 
 
@@ -45,11 +44,77 @@ int kidane(int a[],int n){int mx= INT16_MIN;int sum=0;rep(i,0,n){sum+=a[i];mx= m
 void solve()
 {
     IO
+    int n;cin>>n;int a[3*n];rep(i,0,3*n)cin>>a[i];
+    multimap<int,int>m1,m2;
+    int s1=0,s2=0;
+    int a1[n+1],b1[n+1];
+    rep(i,0,n)
+    {
+        m1.insert({a[i],1});
+        s1+=a[i];
+    }
+    rep(i,2*n,3*n)
+    {
+        m2.insert({a[i],1});
+        s2+=a[i];
+    }
+    multimap<int,int>::iterator it;
+    int j=1;
+    a1[0]=s1;
+    rep(i,n,2*n)
+    {
+        
+        it=m1.begin();
+        if(a[i]>it->first)
+        {
+            s1=s1-it->first;
+            s1+=a[i];
+            m1.insert({a[i],1});
+            m1.erase(m1.begin());
+        }
+        a1[j]=s1;
+        j++;
+
+    }
+    multimap<int,int>::iterator it2;
+    j=1;
+    b1[0]=s2;
+    for(int i=2*n-1;i>=n;i--)
+    {
+        
+        it2=m2.begin();
+        if(a[i]<it2->first)
+        {
+            s2=s2-it2->first;
+            s2+=a[i];
+            m2.insert({a[i],1});
+            m2.erase(m2.begin());
+        }
+        b1[j]=s2;
+        j++;
+    }
+    int ans= INT_MIN;
+    for(int i=0;i<n+1;i++)
+    {
+        ans=max(ans,a1[i]-b1[n-i]);
+    }
+    cout<<ans<<"\n";
 }
 
 int main()
 {
     solve();
+    /* multimap<int,int>m3;
+    m3.insert({1,1});
+    m3.insert({1,1});
+    m3.insert({9,1});
+    m3.insert({1,1});
+    m3.insert({2,1});
+    m3.insert({2,1});
+    cout<<m3.size()<<" ";
+    m3.erase(m3.begin());
+    cout<<m3.size()<<" "; */
+    
     return 0;
 }
 

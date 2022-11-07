@@ -40,11 +40,28 @@ int kidane(int a[],int n){int mx= INT16_MIN;int sum=0;rep(i,0,n){sum+=a[i];mx= m
 
 
 
-
+// in this problem we will print anagram of that no
 
 void solve()
 {
     IO
+    int n;cin>>n;
+    string s[n];rep(i,0,n)cin>>s[i];
+    map<string,vector<string>>ana;
+    rep(i,0,n)
+    {
+        string temp=s[i];
+        sort(temp.begin(),temp.end());
+        ana[temp].push_back(s[i]);
+    }
+    map<string,vector<string>>::iterator it;
+    for(auto it=ana.begin();it!=ana.end();it++)
+    {
+        cout<<it->second[0]<<" ";
+    }
+
+
+
 }
 
 int main()

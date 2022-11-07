@@ -33,9 +33,8 @@ int nsum(int x){return(x*(x+1))/2;}
 int fact(int x){if(x<=1)return 1;else return x*fact(x-1);}
 bool isPalindrome(string s){int n=s.length();rep(i,0,n/2){if(s[i]!=s[n-i-1])return false;}return true;}
 int is_search(int a[],int k,int l,int r){if(l<=r){int mid=(l+r)/2;if(a[mid]==k)return mid;
-        if(a[mid]<k)return is_search(a,k,mid+1,r);else return is_search(a,k,l,mid-1);}else{return -1;}}
-int kidane(int a[],int n){int mx= INT16_MIN;int sum=0;rep(i,0,n){sum+=a[i];mx= max(sum,mx);if(sum<0)
-        {sum=0;}}return mx;}
+        if(a[mid]<k)return is_search(a,k,mid+1,r);else return is_search(a,k,l,mid-1);}else{return -1;}
+}
 
 
 
@@ -45,6 +44,33 @@ int kidane(int a[],int n){int mx= INT16_MIN;int sum=0;rep(i,0,n){sum+=a[i];mx= m
 void solve()
 {
     IO
+    w(x)
+    {
+        int n,m;cin>>n>>m;int a[n][m];rep(i,0,n){rep(j,0,m){cin>>a[i][j];}}
+        int ans=0;
+        rep(i,0,n)
+        {
+            rep(j,0,m)
+            {
+                int sm=0;
+
+                int i1=i,j1=j;
+                while(i1<n&&j1<m){sm+=a[i1][j1];i1++;j1++;}
+
+                int i2=i-1,j2=j-1;
+                while(i2>=0&&j2>=0){sm+=a[i2][j2];i2--;j2--;}
+
+                int i3=i+1,j3=j-1;
+                while(i3<n&&j3>=0){sm+=a[i3][j3];i3++;j3--;}
+
+                int i4=i-1,j4=j+1;
+                while(i4>=0&&j4<m){sm+=a[i4][j4];i4--;j4++;}
+
+                ans= max(ans,sm);
+            }
+        }
+        cout<<ans<<"\n";
+    }
 }
 
 int main()

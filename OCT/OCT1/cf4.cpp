@@ -45,6 +45,17 @@ int kidane(int a[],int n){int mx= INT16_MIN;int sum=0;rep(i,0,n){sum+=a[i];mx= m
 void solve()
 {
     IO
+    w(x)
+    {
+        int n;cin>>n;
+        int a=1;
+        //int c=n;
+        int b= (n-3)/3;
+        int c= n-4-b;
+        int ans= min(abs(a-b),abs(b-c));
+        ans= min(ans,abs(c-a));
+        cout<<ans<<"\n";
+    }
 }
 
 int main()

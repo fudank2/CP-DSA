@@ -39,12 +39,29 @@ int kidane(int a[],int n){int mx= INT16_MIN;int sum=0;rep(i,0,n){sum+=a[i];mx= m
 
 
 
-
+//in this question a array and a sum given and we have to find pair of that sum's index.
 
 
 void solve()
 {
     IO
+    int n,sum;cin>>n>>sum;int a[n];rep(i,0,n)cin>>a[i];
+    map<int,int>m;
+    rep(i,0,n)
+    {
+        m.insert({a[i],i+1});
+    }
+    map<int,int>::iterator i;
+    for(auto i=m.begin();i!=m.end();i++)
+    {
+        int a1= i->first;
+        if(m[sum-a1])
+        {
+            cout<<i->second<<" "<<m[sum-a1]<<"\n";
+            break;
+        }
+    }
+    
 }
 
 int main()
